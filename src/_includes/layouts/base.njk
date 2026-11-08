@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% if title %}{{ title }} — {% endif %}{{ site.name }} Release Notes</title>
+    <meta name="description" content="{{ description or site.description }}">
+    <meta name="theme-color" content="#101522">
+    <link rel="canonical" href="{{ page.url | absoluteUrl }}">
+    <meta property="og:site_name" content="provn Release Notes">
+    <meta property="og:title" content="{% if title %}{{ title }} — {% endif %}provn Release Notes">
+    <meta property="og:description" content="{{ description or site.description }}">
+    <meta property="og:type" content="{% if isRelease %}article{% else %}website{% endif %}">
+    <meta property="og:url" content="{{ page.url | absoluteUrl }}">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="alternate" href="/feed.xml" type="application/rss+xml" title="provn Release Notes">
+    <link rel="stylesheet" href="/assets/style.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="/" aria-label="provn Release Notes home">
+          <img class="brand-logo" src="/assets/provn-logo.png" alt="provn" width="112" height="34">
+          <span class="brand-divider" aria-hidden="true"></span>
+          <span class="brand-section">Release Notes</span>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a class="nav-cta" href="https://provn.co">Explore <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+    <main class="page-shell" id="main-content" tabindex="-1">
+      {{ content | safe }}
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-brand">© {{ site.year }} provn. Built for what’s next.</p>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="/feed.xml">RSS feed <span aria-hidden="true">↗</span></a>
+          <a href="https://provn.co">provn.co <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

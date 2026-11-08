@@ -1,0 +1,61 @@
+---
+layout: layouts/base.njk
+---
+<section class="hero" aria-labelledby="page-title">
+  <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> PROVN RELEASE NOTES</p>
+  <h1 class="hero-title" id="page-title">Always moving <span>forward.</span></h1>
+  <p class="hero-description">The latest features, improvements, and fixes across provn. A closer look at what we’re building for you.</p>
+</section>
+
+<div class="changelog-layout">
+  <section class="changelog-main" aria-labelledby="updates-heading">
+    <div class="section-heading">
+      <h2 class="section-label" id="updates-heading">Latest updates</h2>
+      <span class="section-count">{{ collections.releases | length }} {% if collections.releases | length == 1 %}update{% else %}updates{% endif %}</span>
+    </div>
+    {% if collections.releases | length %}
+      <ol class="release-list">
+        {% for release in collections.releases %}
+          <li class="release-item">
+            <time class="release-date" datetime="{{ release.data.date | dateISO }}">{{ release.data.date | dateDisplay }}</time>
+            <article class="release-card" aria-labelledby="release-{{ loop.index }}">
+              <div class="release-meta"><span class="badge badge-{{ release.data.category }}">{{ release.data.category | categoryLabel }}</span></div>
+              <h3 class="release-title" id="release-{{ loop.index }}">{{ release.data.title }}</h3>
+              {% if release.data.description %}<p class="release-summary">{{ release.data.description }}</p>{% endif %}
+              <div class="release-content prose">{{ release.templateContent | safe }}</div>
+            </article>
+          </li>
+        {% endfor %}
+      </ol>
+    {% else %}
+      <div class="empty-state">
+        <div class="empty-icon" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <path d="M11 9h-2a3 3 0 0 0-3 3v16a3 3 0 0 0 3 3h18a3 3 0 0 0 3-3V12a3 3 0 0 0-3-3h-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <rect x="12" y="5" width="12" height="7" rx="2" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M12 19h12M12 25h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="empty-kicker">A NEW CHAPTER</p>
+        <h3 class="empty-title">Good things are on the way.</h3>
+        <p class="empty-description">This is where we’ll share what’s new at provn.<br>Check back soon for our first update.</p>
+        <a class="empty-link" href="https://provn.co">Get to know provn <span aria-hidden="true">↗</span></a>
+      </div>
+    {% endif %}
+  </section>
+  <aside class="changelog-aside" aria-label="About these release notes">
+    <div class="aside-card">
+      <p class="aside-eyebrow">BUILDING IN THE OPEN</p>
+      <h2 class="aside-title">Small changes.<br>Meaningful progress.</h2>
+      <p class="aside-description">Every update is a step toward a better provn. Follow along as the platform evolves.</p>
+      <a class="aside-link" href="/feed.xml">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="4" cy="16" r="1.5" fill="currentColor"/><path d="M3 9a8 8 0 0 1 8 8M3 3a14 14 0 0 1 14 14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        Follow via RSS <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+    <div class="aside-note">
+      <span class="aside-note-dot" aria-hidden="true"></span>
+      <p>Thoughtfully built.<br>Continuously improving.</p>
+    </div>
+  </aside>
+</div>

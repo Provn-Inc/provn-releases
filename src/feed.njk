@@ -1,0 +1,24 @@
+---
+permalink: feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>provn Release Notes</title>
+    <link>{{ "/" | absoluteUrl | escape }}</link>
+    <description>{{ site.description | escape }}</description>
+    <language>en</language>
+    <atom:link href="{{ "/feed.xml" | absoluteUrl | escape }}" rel="self" type="application/rss+xml"/>
+    {% for release in collections.releases %}
+    <item>
+      <title>{{ release.data.title | escape }}</title>
+      <link>{{ release.url | absoluteUrl | escape }}</link>
+      <guid isPermaLink="true">{{ release.url | absoluteUrl | escape }}</guid>
+      <pubDate>{{ release.data.date | dateRSS }}</pubDate>
+      <category>{{ release.data.category | categoryLabel }}</category>
+      <description>{{ (release.data.description or release.data.title) | escape }}</description>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>
