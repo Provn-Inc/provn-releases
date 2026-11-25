@@ -10,5 +10,5 @@ description: "Find services more easily, follow clearer challenge links, and sig
 - Public challenge URLs include readable titles, and old links redirect to the new URLs.
 - Users land on their dashboard after signing in or signing up.
 - Candidates complete each onboarding step before moving to the next.
-- Applicant tags stay visible when browser privacy tools are enabled.
+- Applicant labels display more consistently.
 - Leaderboards can be viewed without signing in, with a cleaner empty state.
