@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  pages: read
 
 concurrency:
   group: pages-${{ github.event_name == 'pull_request' && github.head_ref || 'production' }}
