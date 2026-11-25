@@ -31,7 +31,8 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Build site
         env:
-          PATH_PREFIX: ${{ steps.pages.outputs.base_path || '/' }}
+          # The custom domain serves from the origin root, not /provn-releases/.
+          PATH_PREFIX: /
           SITE_URL: ${{ steps.pages.outputs.origin || 'https://releases.provn.co' }}
         run: npm run build
       - name: Upload site
